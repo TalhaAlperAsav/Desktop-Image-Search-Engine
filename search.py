@@ -7,6 +7,9 @@ import os
 from tkinter import filedialog as fd
 import cv2
 
+from pathlib import Path
+import re
+
 
 def removesuffix(string, suffix):
 	if string.endswith(suffix):
@@ -14,13 +17,14 @@ def removesuffix(string, suffix):
 	return string
 
 def Select_folder():
-	
+	home = str(Path.home())
+	userlink = home.replace("/","\\")
 	global panelA, panelB
 	path = fd.askopenfilename(title='Select your folder',filetypes=[('Jpg Files','*.jpg'),('Png Files','*.png')])
 	run2 = "python index.py --dataset " + removesuffix(path,os.path.basename(path)) + " --index index.csv"
 	cmd = run2.replace("/","\\")
-	if os.path.exists("C:\\Users\\BurakT\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv"):
-		os.remove("C:\\Users\\BurakT\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv")
+	if os.path.exists(userlink+"\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv"):
+		os.remove(userlink+"\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv")
 	os.system(cmd)
 	
 	run = "python gui.py --index index.csv --query " + path + " --result-path " + os.path.dirname(path) + "\\"
