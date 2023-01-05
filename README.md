@@ -30,7 +30,7 @@ This project created to find similar images from a given image dataset. To do th
 
  - Open the given Python code to a ideal compiler like Visual Studio or VS Code.
  - Then select the “search.py” as the start-up file by “Right Clicking” on it and selecting “Set as Start-Up File”.
- - Then simply run the code and a select a image by clicking “Select an Image” button from any file from your computer. But we highly suggest that you contact us and ask for a dataset.
+ - Then simply run the code and a select a image by clicking “Select an Image” button from any file from your computer. But we highly suggest that you use the dataset we have given in the prohect file.
  - Don’t worry the search can take a couple seconds. Please be patient.
  - When the outputs appear you can change to the other outcomes simply clicking on “Next Image” button.
  - After 10 image suggestions you will have to make a new search.
