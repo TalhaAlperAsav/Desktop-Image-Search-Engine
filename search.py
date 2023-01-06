@@ -1,14 +1,14 @@
 # import the necessary packages
+
+
+from functools import partial
 from tkinter import Button,Label
 import tkinter
 from PIL import ImageTk, Image
 import cv2
 import os
 from tkinter import filedialog as fd
-import cv2
-
 from pathlib import Path
-import re
 
 
 def removesuffix(string, suffix):
@@ -16,17 +16,25 @@ def removesuffix(string, suffix):
 		return string[:-len(suffix)]
 	return string
 
+
 def Select_folder():
+	
+	
+	
+		
 	home = str(Path.home())
 	userlink = home.replace("/","\\")
-	global panelA, panelB
+	global panelA, panelB, counter2,mybutton
+	
 	path = fd.askopenfilename(title='Select your folder',filetypes=[('Jpg Files','*.jpg'),('Png Files','*.png')])
 	run2 = "python index.py --dataset " + removesuffix(path,os.path.basename(path)) + " --index index.csv"
 	cmd = run2.replace("/","\\")
 	if os.path.exists(userlink+"\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv"):
 		os.remove(userlink+"\\Desktop\\Code\\VisualStudio\\SoftwareEngineeringProject\\index.csv")
 	os.system(cmd)
-	
+	if counter2 > 0:
+		mybutton.destroy()
+	counter2 += 1
 	run = "python gui.py --index index.csv --query " + path + " --result-path " + os.path.dirname(path) + "\\"
 	cmd2 = run.replace("/","\\")
 	string = os.popen(cmd2).read()
@@ -43,9 +51,9 @@ def Select_folder():
 		x = i.replace("'","").replace(")","").replace("\\","/").replace("]","").replace("\n","")
 		y = x.replace("//","/")
 		final_results.append(y)
-	
 	root.counter = 1
-	ResultID = final_results[root.counter]
+	if len(path) > 0:
+		ResultID = final_results[root.counter]
 
 	if len(path) > 0:
 			# load the image from disk, convert it to grayscale, and detect
@@ -63,7 +71,7 @@ def Select_folder():
 			# ...and then to ImageTk format
 			image = ImageTk.PhotoImage(image)
 			imageres = ImageTk.PhotoImage(imageres)
-	if panelA is None or panelB is None:
+	if (panelA is None or panelB is None) and path != "":
 			# the first panel will store our original image
 			panelA = Label(image=image)
 			panelA.image = image
@@ -73,7 +81,7 @@ def Select_folder():
 			panelB.image = imageres
 			panelB.pack(side="right", padx=10, pady=10)
 		# otherwise, update the image panels
-	else:
+	elif len(path) > 0:
 		# update the pannels
 		panelA.configure(image=image)
 		panelB.configure(image=imageres)
@@ -105,21 +113,37 @@ def Select_folder():
 			panelB.image = imageres
 		else:
 			tkinter.messagebox.showinfo(title=None, message="We are out of suggestions please try different image")
+	
+		
 	mybutton = Button(root, text ='Next image',command=clicked)
 	mybutton.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
 	
+	
+
+	
+	
+		
+
 
 
 if __name__ == "__main__":
 	root = tkinter.Tk()
 	panelA = None
 	panelB = None
+	counter2 = 0
+	
 	# create a button, then when pressed, will trigger a file chooser
 	# dialog and allow the user to select an input image; then add the
+	
 	# button the GUI
+	
+	
+	
+	
+	
 	btn = Button(root, text="Select an image", command=Select_folder)
 	btn.pack(side="bottom", fill="both", expand="yes", padx="10", pady="10")
-	global mybutton
+	
 
 	root.mainloop()
 
