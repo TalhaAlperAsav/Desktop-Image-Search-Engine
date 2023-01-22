@@ -39,7 +39,7 @@ This project created to find similar images from a given image dataset. To do th
 
 You can always reach out to us via our emails or phone numbers.
 
- - 201805072@stu.adu.edu.tr (0543 479 85 15) Talha Alper Asav
- - 191805057@stu.adu.edu.tr (0537 781 21 08) Burak Tüzel
- - 191805060@stu.adu.edu.tr (0546 852 86 99) Semih Utku Polat
+ - 201805072@stu.adu.edu.tr Talha Alper Asav
+ - 191805057@stu.adu.edu.tr Burak Tüzel
+ - 191805060@stu.adu.edu.tr Semih Utku Polat
 
