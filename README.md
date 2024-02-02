@@ -37,9 +37,9 @@ This project created to find similar images from a given image dataset. To do th
 
 ## Contact
 
-You can always reach out to us via our emails or phone numbers.
+You can always reach out to us.
 
  - 201805072@stu.adu.edu.tr Talha Alper Asav
  - 191805057@stu.adu.edu.tr Burak Tüzel
- - 191805060@stu.adu.edu.tr Semih Utku Polat
+ - https://github.com/polatsemih Semih Polat
 
